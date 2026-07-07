@@ -2,6 +2,13 @@
 
 このリポジトリは `x-post-daily-core` が毎朝生成するX投稿コピーブロックHTML（`x-copy-blocks-{日付}.html`）をGitHub Pagesで公開するための、公開専用リポジトリです。
 
+## クラウド版デイリールーチン（2026-07-07移行）
+
+毎朝のX投稿文生成はクラウドRoutine「x-post-daily-routine-cloud」（毎朝5:32 JST）が実行する。正本は `.claude/skills/x-post-daily-core/SKILL.md`（このリポジトリ内・クラウド版）。投稿ルール・採点基準・スロット構成の変更はこの正本1箇所だけを修正すること。
+
+- `kpi_feedback.md`：日次KPIフィードバックログ（ルーチンStep 5が末尾に追記）
+- `research/`：日次リサーチ還流ファイル（ルーチンStep 1が保存）
+
 ## URL回収ルーチン（計測欄への書き戻し）
 
 ユーザーがこのリポジトリの新規セッションで、その日投稿したX投稿のURLを貼った場合（目安：5本前後のURLがまとまって貼られる）、Google Calendar（`mcp__Google_Calendar__*` ツール、対象カレンダーは `yuta08290724@gmail.com`）の該当イベントのdescription内「計測：」行に、貼られたURLを書き戻す。
