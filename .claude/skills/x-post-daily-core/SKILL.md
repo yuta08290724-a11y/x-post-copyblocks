@@ -24,7 +24,7 @@ description: |
 |---|---|
 | `C:\Users\Admin\owned-media\kpi_feedback.md` | リポジトリ内 `kpi_feedback.md`（毎日追記してコミット） |
 | Obsidian Vault（ネタ帳・RecoveryNews/Daily5） | Super Memory `recall`（毎朝3時のリサーチRoutineが蓄積した内容を検索） |
-| Hermesデスクトップ（Ollama・系統B） | **常時スキップ**し系統A（WebSearch）を使う |
+| Hermesデスクトップ（Ollama・系統B）の出力先 `C:\Users\Admin\.claude\scripts\hermes-output-{TODAY}.md` | リポジトリ内 `research/hermes-output-{TODAY}.md`（ヘルメス側がここにpushすれば系統Bが復活。なければ系統A＝WebSearchに自動フォールバック） |
 | `competitor_watch.md` | 常時スキップ（将来リポジトリに移設したら復活） |
 | Codex CLI（Step 3.5 味見） | 機械照合チェック（Step 3.5 クラウド版）に置き換え |
 | `gh` CLI（Pagesデプロイ確認） | GitHub MCP（`actions_list` 等） |
@@ -134,7 +134,14 @@ MCPツール名はセッションによって `mcp__Google_Calendar__create_even
 - Step 2 で同一・酷似の組み合わせを避け、新規の組み合わせを優先する
 - **参照情報（2026-07-03時点）：現在コンテンツローテーション中の主軸テーマ＝納豆・キムチ・もち麦・めかぶ・味噌汁。** 主軸食材そのものの再登場はローテ運用としてOK。ただし「同一・酷似の組み合わせ」の7日以内再使用回避ルールは主軸テーマにも適用する
 
-**二次（ハル・OUTER偵察）：WebSearch【クラウド版＝系統Aのみ。系統B（Hermes/Ollama）は常時スキップ】**
+**二次（ハル＋ヒバード・OUTER偵察）：系統B優先【クラウド版】**
+
+【系統B優先】ヘルメス出力ファイル読み取り
+- `Read` で `/home/user/x-post-copyblocks/research/hermes-output-{TODAY}.md` を読む（ヘルメスエージェント＝別ルーチンがこの場所に置く連携ファイル。ローカルPC版・クラウド版どちらのヘルメスでもここに置けば連携できる）
+- あればフック・型・URLを抽出 → 系統Aはスキップ
+- なければ黙ってスキップ → 系統Aへ
+
+【系統A・フォールバック】WebSearch（系統Bが使えなかった場合のみ）
 - WebSearch で以下4アカウントの最新投稿を検索（1アカウントずつ順番に実行）
   1. `WebSearch: site:x.com rukamineral8`
   2. `WebSearch: site:x.com bihadaoji_40`
