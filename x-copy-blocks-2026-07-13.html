@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>X投稿 コピーブロック</title>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --card-bg: #ffffff;
+    --text: #2c2c26;
+    --sub-text: #6b6b60;
+    --green-deep: #3a5a40;
+    --green-mid: #588157;
+    --orange: #e07a3f;
+    --border: #e5ddd0;
+    --shadow: 0 2px 10px rgba(58, 90, 64, 0.08), 0 1px 3px rgba(0,0,0,0.04);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: linear-gradient(180deg, #faf7f2 0%, #f5efe4 100%);
+    color: var(--text);
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+    line-height: 1.7;
+    padding: 20px 12px 60px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; }
+  header.page-header {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 20px 20px 18px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  header.page-header h1 { margin: 0 0 6px; font-size: 1.3rem; color: var(--green-deep); letter-spacing: 0.02em; }
+  header.page-header .date { font-size: 0.9rem; color: var(--sub-text); margin-bottom: 12px; }
+  .rank-line { font-size: 0.85rem; color: var(--text); background: #f0ede3; border-radius: 10px; padding: 10px 12px; line-height: 1.6; }
+  .rank-line strong { color: var(--orange); }
+  .cards { display: flex; flex-direction: column; gap: 18px; }
+  .card { background: var(--card-bg); border-radius: 18px; box-shadow: var(--shadow); border: 1px solid var(--border); overflow: hidden; }
+  .card.accent-recipe { border-left: 5px solid var(--orange); }
+  .card-top { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px 10px; gap: 8px; flex-wrap: wrap; }
+  .top-left, .top-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .badge { display: inline-flex; align-items: center; font-size: 0.78rem; font-weight: 700; padding: 5px 10px; border-radius: 999px; white-space: nowrap; }
+  .badge-no { background: var(--green-deep); color: #fff; }
+  .badge-time { background: #eef2ea; color: var(--green-mid); border: 1px solid #d8e3d3; }
+  .badge-score { background: #fdece0; color: var(--orange); border: 1px solid #f6d3ba; }
+  .badge-count { background: #f0ede3; color: var(--sub-text); font-weight: 500; }
+  .card-body { padding: 4px 16px 16px; white-space: pre-wrap; word-break: break-word; font-size: 0.95rem; line-height: 1.9; color: var(--text); }
+  .card-footer { padding: 0 16px 16px; }
+  .copy-btn { width: 100%; min-height: 52px; border: none; border-radius: 12px; background: var(--green-mid); color: #fff; font-size: 1rem; font-weight: 700; letter-spacing: 0.03em; cursor: pointer; transition: background-color 0.2s ease, transform 0.1s ease; font-family: inherit; }
+  .copy-btn:active { transform: scale(0.98); }
+  .copy-btn:hover { background: var(--green-deep); }
+  .copy-btn.copied { background: var(--orange); }
+  footer.page-footer { text-align: center; font-size: 0.75rem; color: var(--sub-text); margin-top: 24px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="page-header">
+    <h1>X投稿 コピーブロック</h1>
+    <div class="date">2026-07-13（月曜）</div>
+    <div class="rank-line">推奨順位　<strong>1位=No.2</strong> / 2位=No.5 / 3位=No.3 / 4位=No.1 / 5位=No.4</div>
+  </header>
+  <div class="cards">
+    <div class="card" data-card="1">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.1</span>
+          <span class="badge badge-time">11:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">50点</span>
+          <span class="badge badge-count" data-count-for="1">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="1"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="1">コピー</button>
+      </div>
+    </div>
+
+    <div class="card" data-card="2">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.2</span>
+          <span class="badge badge-time">14:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">51点</span>
+          <span class="badge badge-count" data-count-for="2">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="2"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="2">コピー</button>
+      </div>
+    </div>
+
+    <div class="card" data-card="3">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.3</span>
+          <span class="badge badge-time">17:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">50点</span>
+          <span class="badge badge-count" data-count-for="3">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="3"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="3">コピー</button>
+      </div>
+    </div>
+
+    <div class="card" data-card="4">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.4</span>
+          <span class="badge badge-time">19:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">50点</span>
+          <span class="badge badge-count" data-count-for="4">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="4"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="4">コピー</button>
+      </div>
+    </div>
+
+    <div class="card accent-recipe" data-card="5">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.5</span>
+          <span class="badge badge-time">21:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">51点</span>
+          <span class="badge badge-count" data-count-for="5">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="5"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="5">コピー</button>
+      </div>
+    </div>
+  </div>
+  <footer class="page-footer">タップでコピー → Xに貼り付けて投稿</footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var POSTS = {
+    "1": `8時間しっかり寝ても、月曜の朝だけ体が重い。睡眠時間だけやなく、休み中の活動量や腸のリズムも関係してるかもしれへん。
+
+休みの日は動く量が減って、寝てる間もそのまま腸の動きまで一緒に鈍る。寝るほど回復するどころか、逆に胃の奥に重さが残る。
+
+セブンで買えるもんだけで、胃の奥の重さを軽くする選択肢にする。即席わかめスープ1袋、蒸し大豆パック1個、ゆで卵1個。スープにお湯を注いでる間に大豆をほぐして卵を割り入れるだけ、3分あれば十分や。
+
+わかめの食物繊維と大豆のたんぱく質を、朝一番に入れられる組み合わせや。派手さはないけど、腸を動かす後押しになるという考え方がある。
+
+俺も現場に立っとった頃、月曜の朝だけこの3つを机に置いて食っとった。食べてしばらくすると、胃の重さが少しずつ引いていって、頭も少しずつ回りだす感じがする。`,
+    "2": `会議前、コーヒーだけで乗り切ろうとしてへんか？レジ横のそれ、小腹と集中感にまで関わってるって知っとったか？
+
+🥉 ゆで卵（1個）
+手軽なたんぱく源。小腹を満たしながら、午後の間食欲を自然に抑えてくれる定番や。
+
+🥈 素焼きアーモンド（個包装）
+油で揚げてへん、塩もついてへんタイプを選べ。噛む音と香ばしさで、沈みかけた集中がふっと戻る感じがする。
+
+🥇 素焼きミックスナッツ（アーモンド・カシューナッツ）
+封を開けてそのまま口へ運ぶだけ。会議前のレジ横で選ぶなら、これが一番手軽で変化を感じやすい。
+
+俺も現場に立っとった頃、コーヒーだけで乗り切ろうとして余計イライラしとった時期があった。会議前の3分、レジ横で素通りせんと一回だけ試してみてくれ。`,
+    "3": `そのチューブわさび、本物やと思って使ってへんか？
+
+厨房でも新人の頃はそうやった。せやけどあの中身、実は主原料が西洋わさび、いわゆるホースラディッシュや。緑色も着色料でついてるだけで、本わさびとはほぼ別物。
+
+本わさび特有の香りや辛味成分を期待するなら、ホースラディッシュ主体のチューブとは別物として見といた方がええ。体にええ成分を期待して使ってても、その効果はそのまま乗ってるとは限らへん。
+
+見分け方は簡単や。パッケージの「本わさび使用」と「本わさび入り」、この2文字の差だけ確認してくれ。「使用」は本わさびが半分以上、「入り」はそれ未満。今使ってるチューブ、一回だけ裏返して見てみ。それだけでええ。`,
+    "4": `疲れ切って倒れるように寝たのに、夜中に3回も目ぇ覚める、そんな夜が続いてへんか？
+
+俺も週6で厨房に立っとった頃、閉店作業終えて疲れ切って倒れるように寝たはずやのに、夜中に何回も目ぇ覚めて、朝は寝た気がせんことがようあった。振り返ると、寝る直前まで空腹でおった日ほど落ち着きにくかった気がする。
+
+腸の中の菌は、眠りに関わる材料の一部を作ってるって話がある。空腹のまま寝ると、その材料作りがうまく回りにくくなる可能性があるらしい。
+
+それに気づいてから、寝る30分くらい前に、即席の味噌汁を半分だけ飲むようにした。それだけで、落ち着いて眠りに入りやすくなった感じがして、朝起きた時の体の重さも違うようになった。`,
+    "5": `【今夜の食再生レシピ #1】
+夜遅くに食べても、翌朝の胃の重さを引きずりにくいセブン限定の組み合わせ。
+
+セブン限定・翌朝回復セット
+5分｜電気ケトル/レンジ｜包丁なし｜600円目安
+
+サラダチキン（プレーン）1個
+蒸し大豆パック1個
+生みそ即席スープ1杯
+【隠し味】バルサミコ酢（小さじ1）
+
+味噌汁にお湯を注ぐ→サラダチキンと蒸し大豆をほぐして混ぜる→バルサミコを垂らして完成
+
+湯気の立つ味噌汁に、バルサミコの香りがふわっと重なる一皿。
+今日みたいに疲れ切った月曜の夜こそ、これだけでええ。`
+  };
+
+  Object.keys(POSTS).forEach(function (key) {
+    var text = POSTS[key];
+    var bodyEl = document.querySelector('[data-body="' + key + '"]');
+    var countEl = document.querySelector('[data-count-for="' + key + '"]');
+    if (bodyEl) bodyEl.textContent = text;
+    if (countEl) countEl.textContent = text.length + "字";
+  });
+
+  function copyText(text) {
+    return new Promise(function (resolve, reject) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(resolve).catch(function () {
+          fallbackCopy(text) ? resolve() : reject(new Error("fallback copy failed"));
+        });
+      } else {
+        fallbackCopy(text) ? resolve() : reject(new Error("fallback copy failed"));
+      }
+    });
+  }
+
+  function fallbackCopy(text) {
+    var textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.top = "0";
+    textarea.style.left = "0";
+    textarea.style.width = "1px";
+    textarea.style.height = "1px";
+    textarea.style.padding = "0";
+    textarea.style.border = "none";
+    textarea.style.outline = "none";
+    textarea.style.boxShadow = "none";
+    textarea.style.background = "transparent";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    textarea.setSelectionRange(0, textarea.value.length);
+    var success = false;
+    try { success = document.execCommand("copy"); } catch (err) { success = false; }
+    document.body.removeChild(textarea);
+    return success;
+  }
+
+  document.querySelectorAll(".copy-btn").forEach(function (btn) {
+    var key = btn.getAttribute("data-copy-btn");
+    btn.addEventListener("click", function () {
+      var text = POSTS[key];
+      if (!text) return;
+      copyText(text).then(function () {
+        showCopied(btn);
+      }).catch(function () {
+        btn.textContent = "コピー失敗";
+        setTimeout(function () { btn.textContent = "コピー"; }, 1500);
+      });
+    });
+  });
+
+  function showCopied(btn) {
+    btn.textContent = "✓ コピーしました";
+    btn.classList.add("copied");
+    setTimeout(function () {
+      btn.textContent = "コピー";
+      btn.classList.remove("copied");
+    }, 1500);
+  }
+})();
+</script>
+</body>
+</html>
