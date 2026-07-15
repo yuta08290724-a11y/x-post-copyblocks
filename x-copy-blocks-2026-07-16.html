@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>X投稿 コピーブロック</title>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --card-bg: #ffffff;
+    --text: #2c2c26;
+    --sub-text: #6b6b60;
+    --green-deep: #3a5a40;
+    --green-mid: #588157;
+    --orange: #e07a3f;
+    --border: #e5ddd0;
+    --shadow: 0 2px 10px rgba(58, 90, 64, 0.08), 0 1px 3px rgba(0,0,0,0.04);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: linear-gradient(180deg, #faf7f2 0%, #f5efe4 100%);
+    color: var(--text);
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+    line-height: 1.7;
+    padding: 20px 12px 60px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; }
+  header.page-header {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 20px 20px 18px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  header.page-header h1 { margin: 0 0 6px; font-size: 1.3rem; color: var(--green-deep); letter-spacing: 0.02em; }
+  header.page-header .date { font-size: 0.9rem; color: var(--sub-text); margin-bottom: 12px; }
+  .rank-line { font-size: 0.85rem; color: var(--text); background: #f0ede3; border-radius: 10px; padding: 10px 12px; line-height: 1.6; }
+  .rank-line strong { color: var(--orange); }
+  .cards { display: flex; flex-direction: column; gap: 18px; }
+  .card { background: var(--card-bg); border-radius: 18px; box-shadow: var(--shadow); border: 1px solid var(--border); overflow: hidden; }
+  .card.accent-recipe { border-left: 5px solid var(--orange); }
+  .card-top { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px 10px; gap: 8px; flex-wrap: wrap; }
+  .top-left, .top-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .badge { display: inline-flex; align-items: center; font-size: 0.78rem; font-weight: 700; padding: 5px 10px; border-radius: 999px; white-space: nowrap; }
+  .badge-no { background: var(--green-deep); color: #fff; }
+  .badge-time { background: #eef2ea; color: var(--green-mid); border: 1px solid #d8e3d3; }
+  .badge-score { background: #fdece0; color: var(--orange); border: 1px solid #f6d3ba; }
+  .badge-count { background: #f0ede3; color: var(--sub-text); font-weight: 500; }
+  .card-body { padding: 4px 16px 16px; white-space: pre-wrap; word-break: break-word; font-size: 0.95rem; line-height: 1.9; color: var(--text); }
+  .card-footer { padding: 0 16px 16px; }
+  .copy-btn { width: 100%; min-height: 52px; border: none; border-radius: 12px; background: var(--green-mid); color: #fff; font-size: 1rem; font-weight: 700; letter-spacing: 0.03em; cursor: pointer; transition: background-color 0.2s ease, transform 0.1s ease; font-family: inherit; }
+  .copy-btn:active { transform: scale(0.98); }
+  .copy-btn:hover { background: var(--green-deep); }
+  .copy-btn.copied { background: var(--orange); }
+  footer.page-footer { text-align: center; font-size: 0.75rem; color: var(--sub-text); margin-top: 24px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="page-header">
+    <h1>X投稿 コピーブロック</h1>
+    <div class="date">2026-07-16</div>
+    <div class="rank-line">推奨順位　<strong>1位=No.1</strong> / 2位=No.4 / 3位=No.3 / 4位=No.2 / 5位=No.5</div>
+  </header>
+  <div class="cards">
+    <div class="card" data-card="1">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.1</span>
+          <span class="badge badge-time">11:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">51点</span>
+          <span class="badge badge-count" data-count-for="1">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="1"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="1">コピー</button>
+      </div>
+    </div>
+
+    <div class="card" data-card="2">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.2</span>
+          <span class="badge badge-time">14:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">50点</span>
+          <span class="badge badge-count" data-count-for="2">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="2"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="2">コピー</button>
+      </div>
+    </div>
+
+    <div class="card" data-card="3">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.3</span>
+          <span class="badge badge-time">17:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">50点</span>
+          <span class="badge badge-count" data-count-for="3">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="3"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="3">コピー</button>
+      </div>
+    </div>
+
+    <div class="card" data-card="4">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.4</span>
+          <span class="badge badge-time">19:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">50点</span>
+          <span class="badge badge-count" data-count-for="4">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="4"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="4">コピー</button>
+      </div>
+    </div>
+
+    <div class="card accent-recipe" data-card="5">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.5</span>
+          <span class="badge badge-time">18:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">46点</span>
+          <span class="badge badge-count" data-count-for="5">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="5"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="5">コピー</button>
+      </div>
+    </div>
+  </div>
+  <footer class="page-footer">タップでコピー → Xに貼り付けて投稿</footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var POSTS = {
+    "1": `コンビニでオートミールカップ、毎朝ちょこっとだけ足して腸活した気になってへんか？俺も現場が忙しかった頃、まさにそれで満足してた口や。
+
+実は、ちょっとずつ続けるだけやと、腸の状態はほとんど変わらへんかった、っちゅう研究がある。せやのに、思いっきりオーツ麦中心の食生活に振り切った短期間だけは、腸のバリア機能に関わる数値がしっかり動いたらしい。
+
+量でごまかせへんちゅうことやな。
+
+俺の提案はシンプルや。次の休みの日、朝昼晩ぜんぶオーツ麦・オートミール中心で固めてみてな。コンビニのオートミールカップとオーツ麦パンを買いだめしとくだけでできる。
+
+次の休みに一度、量をしっかり摂る日を作ってみてや。中途半端に続けるより、その1日で体の変化に気づけるかもしれんで。`,
+    "2": `プレゼン前3分、コーヒーでシャキッとさせようとしてへんか？迷ったらこの3品で頭の回転を守れ。
+
+🥉 ミックスナッツ小袋（15g程度）
+噛む動作と血糖の急上昇を抑える働きで、頭がぼーっとする感じを防ぐ。デスクに常備しとける手軽さも魅力。
+
+🥈 ホットの緑茶か生姜湯
+カフェインを一気に入れると、逆に心拍が上がって緊張が強まることがあるらしい。体を内側からじんわり温めて、変に力んだ肩の感じを緩めてくれるのは、むしろこっちの方や。カフェイン控えめの生姜湯なら、食後すぐでも胃に優しい。
+
+🥇 冷凍枝豆か豆ベースのパウチスープ
+豆に含まれる成分を摂ると、緊張が強い人ほど反応が早くなった、という研究がある。頭の回転を守りたい本番前には、これを一番手に置いとけ。
+
+厨房でも本番前にコーヒーがぶ飲みして、余計テンパってた奴を何人も見てきた。今日の本番前、コーヒーの代わりにこの3つのどれか試してみ。それだけで会議の後半、頭の重さが変わってくるで。`,
+    "3": `ファミマの機能性表示茶、飲んだら白飯のおかわり、しても大丈夫になったと思ってへんか？俺も厨房が忙しかった時期、まさにそれをやってた口や。
+
+ファミリーマートの「機能性表示食品」ラベル付き無糖茶飲料。難消化性デキストリンが入ったタイプが対象だ。
+
+実は、この手の飲料は「飲んだから安心」で他の食事量が緩みやすい、という落とし穴があるらしい。長い目で見た血糖の指標には変化が出た一方、飲んですぐの数値そのものには差がなかった、という研究もある。つまり効果は「飲んだ直後」ではなく「毎日の積み重ね」に出るもので、飲料が食事の乱れを帳消しにしてくれるわけではない。
+
+コンビニ飯が続いてて、血糖まわりを長期的に整えたい人向け。「これさえ飲めば他は気にせんでええ」と思ってる人には、正直厳しい話や。
+
+飲料はあくまで土台の補強。今日の一杯とごはんの量、両方ちょっと見直すだけで、来週の体の軽さが変わってくるで。
+
+次にファミマ寄ったとき、ラベルの端っこだけでも見てみてな。`,
+    "4": `余裕なくなると、つい後輩にキツく当たってしまう人、おらへんか？
+
+週6で厨房に立ってた時期、忙しさで余裕がのうなって、後輩の些細なミスにもキツい言い方をしてしまうことがあった。自分でも「言い過ぎた」と分かってても、その場では止まらへんかった。
+
+ある日、機嫌が悪くなる日のパターンをふと振り返ってみたら、朝ほとんど食わずに休憩でいきなり菓子パンを一気食いしてる日ほど、イライラが強い、っちゅう共通点に気づいた。
+
+それから、休憩に入る前にゆで卵を一つ先に食べる習慣に変えた。血糖が乱高下しにくくなったからか、休憩明けの苛立ちが目に見えて減った。
+
+今は後輩にキツく当たることも減って、厨房の空気も前よりずっとええ感じになった。
+
+余裕がのうなってきたな、と思ったら、まず休憩前に何か少し口に入れてみてや。それだけで今日の機嫌、変わるかもしれんで。`,
+    "5": `残業続きで、晩飯が毎日コンビニのおにぎりだけになってる人へ。具だくさんの温かい一杯で、翌朝の胃の重さが変わるかもしれん一皿。
+【今夜の食再生レシピ #4】
+
+塩麴アンチョビ豆腐スープ
+8分 | コンロ | 包丁なし | 400円目安
+
+絹ごし豆腐（150g）
+冷凍むきえび（80g）
+冷凍ブロッコリー（100g）
+【隠し味】アンチョビペースト（小さじ1/2）
+
+小鍋にお湯250mlを沸かし塩麴大さじ1とアンチョビペーストを溶かす → 豆腐を手でちぎって加え、むきえびとブロッコリーを入れて中火3分煮る → 味を見て仕上げる
+
+ふわっと立ち上る磯の香りと、とろっとほどけた豆腐の食感で、体の芯からじんわり温まる。
+毎晩しんどい人に、この一杯を。塩麴の発酵旨味とえびのコクで、今夜の食事をちゃんと立て直そう。`
+  };
+
+  Object.keys(POSTS).forEach(function (key) {
+    var text = POSTS[key];
+    var bodyEl = document.querySelector('[data-body="' + key + '"]');
+    var countEl = document.querySelector('[data-count-for="' + key + '"]');
+    if (bodyEl) bodyEl.textContent = text;
+    if (countEl) countEl.textContent = text.length + "字";
+  });
+
+  function copyText(text) {
+    return new Promise(function (resolve, reject) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(resolve).catch(function () {
+          fallbackCopy(text) ? resolve() : reject(new Error("fallback copy failed"));
+        });
+      } else {
+        fallbackCopy(text) ? resolve() : reject(new Error("fallback copy failed"));
+      }
+    });
+  }
+
+  function fallbackCopy(text) {
+    var textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.top = "0";
+    textarea.style.left = "0";
+    textarea.style.width = "1px";
+    textarea.style.height = "1px";
+    textarea.style.padding = "0";
+    textarea.style.border = "none";
+    textarea.style.outline = "none";
+    textarea.style.boxShadow = "none";
+    textarea.style.background = "transparent";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    textarea.setSelectionRange(0, textarea.value.length);
+    var success = false;
+    try { success = document.execCommand("copy"); } catch (err) { success = false; }
+    document.body.removeChild(textarea);
+    return success;
+  }
+
+  document.querySelectorAll(".copy-btn").forEach(function (btn) {
+    var key = btn.getAttribute("data-copy-btn");
+    btn.addEventListener("click", function () {
+      var text = POSTS[key];
+      if (!text) return;
+      copyText(text).then(function () {
+        showCopied(btn);
+      }).catch(function () {
+        btn.textContent = "コピー失敗";
+        setTimeout(function () { btn.textContent = "コピー"; }, 1500);
+      });
+    });
+  });
+
+  function showCopied(btn) {
+    btn.textContent = "✓ コピーしました";
+    btn.classList.add("copied");
+    setTimeout(function () {
+      btn.textContent = "コピー";
+      btn.classList.remove("copied");
+    }, 1500);
+  }
+})();
+</script>
+</body>
+</html>
