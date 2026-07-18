@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>X図解 画像プロンプト</title>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --card-bg: #ffffff;
+    --text: #2c2c26;
+    --sub-text: #6b6b60;
+    --green-deep: #3a5a40;
+    --green-mid: #588157;
+    --orange: #e07a3f;
+    --border: #e5ddd0;
+    --shadow: 0 2px 10px rgba(58, 90, 64, 0.08), 0 1px 3px rgba(0,0,0,0.04);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: linear-gradient(180deg, #faf7f2 0%, #f5efe4 100%);
+    color: var(--text);
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+    line-height: 1.7;
+    padding: 20px 12px 60px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; }
+  header.page-header {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 20px 20px 18px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  header.page-header h1 { margin: 0 0 6px; font-size: 1.3rem; color: var(--green-deep); letter-spacing: 0.02em; }
+  header.page-header .date { font-size: 0.9rem; color: var(--sub-text); margin-bottom: 12px; }
+  .rank-line { font-size: 0.85rem; color: var(--text); background: #f0ede3; border-radius: 10px; padding: 10px 12px; line-height: 1.6; }
+  .rank-line strong { color: var(--orange); }
+  .cards { display: flex; flex-direction: column; gap: 18px; }
+  .card { background: var(--card-bg); border-radius: 18px; box-shadow: var(--shadow); border: 1px solid var(--border); overflow: hidden; }
+  .card.accent-recipe { border-left: 5px solid var(--orange); }
+  .card-top { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px 10px; gap: 8px; flex-wrap: wrap; }
+  .top-left, .top-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .badge { display: inline-flex; align-items: center; font-size: 0.78rem; font-weight: 700; padding: 5px 10px; border-radius: 999px; white-space: nowrap; }
+  .badge-no { background: var(--green-deep); color: #fff; }
+  .badge-time { background: #eef2ea; color: var(--green-mid); border: 1px solid #d8e3d3; }
+  .badge-score { background: #fdece0; color: var(--orange); border: 1px solid #f6d3ba; }
+  .badge-count { background: #f0ede3; color: var(--sub-text); font-weight: 500; }
+  .card-body { padding: 4px 16px 16px; white-space: pre-wrap; word-break: break-word; font-size: 0.95rem; line-height: 1.9; color: var(--text); }
+  .card-footer { padding: 0 16px 16px; }
+  .copy-btn { width: 100%; min-height: 52px; border: none; border-radius: 12px; background: var(--green-mid); color: #fff; font-size: 1rem; font-weight: 700; letter-spacing: 0.03em; cursor: pointer; transition: background-color 0.2s ease, transform 0.1s ease; font-family: inherit; }
+  .copy-btn:active { transform: scale(0.98); }
+  .copy-btn:hover { background: var(--green-deep); }
+  .copy-btn.copied { background: var(--orange); }
+  footer.page-footer { text-align: center; font-size: 0.75rem; color: var(--sub-text); margin-top: 24px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="page-header">
+    <h1>X図解 画像プロンプト</h1>
+    <div class="date">2026-07-19（日曜・No.5スイーツ枠固定）</div>
+    <div class="rank-line">推奨順位　<strong>1位=No.1</strong> / 2位=No.4 / 3位=No.2 / 4位=No.3 / 5位=No.5</div>
+  </header>
+  <div class="cards">
+    <div class="card" data-card="1">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.1</span>
+          <span class="badge badge-time">9:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">51点</span>
+          <span class="badge badge-count" data-count-for="1">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="1"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="1">コピー</button>
+      </div>
+    </div>
+
+    <div class="card" data-card="2">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.2</span>
+          <span class="badge badge-time">11:30</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">50点</span>
+          <span class="badge badge-count" data-count-for="2">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="2"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="2">コピー</button>
+      </div>
+    </div>
+
+    <div class="card" data-card="3">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.3</span>
+          <span class="badge badge-time">14:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">50点</span>
+          <span class="badge badge-count" data-count-for="3">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="3"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="3">コピー</button>
+      </div>
+    </div>
+
+    <div class="card" data-card="4">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.4</span>
+          <span class="badge badge-time">16:30</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">50点</span>
+          <span class="badge badge-count" data-count-for="4">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="4"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="4">コピー</button>
+      </div>
+    </div>
+
+    <div class="card accent-recipe" data-card="5a">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.5-①</span>
+          <span class="badge badge-time">14:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">46点</span>
+          <span class="badge badge-count" data-count-for="5a">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="5a"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="5a">コピー</button>
+      </div>
+    </div>
+
+    <div class="card accent-recipe" data-card="5b">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.5-②</span>
+          <span class="badge badge-time">14:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">46点</span>
+          <span class="badge badge-count" data-count-for="5b">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="5b"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="5b">コピー</button>
+      </div>
+    </div>
+
+    <div class="card accent-recipe" data-card="5c">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.5-③</span>
+          <span class="badge badge-time">14:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">46点</span>
+          <span class="badge badge-count" data-count-for="5c">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="5c"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="5c">コピー</button>
+      </div>
+    </div>
+  </div>
+  <footer class="page-footer">タップでコピー → 画像生成AIに貼り付け（シェフ入りは official-chef.jpg を添付）</footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var POSTS = {
+    "1": `黒背景・白文字・黄色見出し・赤アクセントの横長(1600×640, 5:2)広告ポスター風デザイン。極太文字、余白広く、スマホで0.5秒で理解できるレイアウト。中央に大きく布団から起き上がれず重だるそうな男性のシルエットイラスト。黄色の見出しで「日曜、寝だめしても月曜ラクにならん」、赤文字で「いつもの時間に起きる」を強調。左下に小さくヨーグルトのアイコン。実在商品のロゴ・パッケージは使わない。`,
+    "2": `黒背景・白文字・黄色見出し・赤アクセントの横長(1600×640, 5:2)広告ポスター風デザイン。極太文字、余白広く、スマホで0.5秒で理解できるレイアウト。中央に大きく🥉🥈🥇のランキング表示（3位:生姜湯、2位:GABAチョコレート、1位:蒸し鶏サラダ×ホットレモン白湯のシルエットアイコン3つを横並び）。黄色見出しで「日曜17時のあの憂うつ」、赤文字で「気合いより先にコレ」を強調。実在商品のロゴ・パッケージは使わない。`,
+    "3": `黒背景・白文字・黄色見出し・赤アクセントの横長(1600×640, 5:2)広告ポスター風デザイン。極太文字、余白広く、スマホで0.5秒で理解できるレイアウト。中央に野菜ジュースのペットボトル2本を並べたイラスト（1本は「野菜」の文字を先頭に、もう1本は「果汁」の文字を先頭に強調表示・パッケージデザインは汎用）。黄色見出しで「その野菜ジュース、ヘルシーって思い込んでへんか？」、赤文字で「原材料表示、見てみ」を強調。実在商品のロゴ・パッケージ再現は禁止。`,
+    "4": `黒背景・白文字・黄色見出し・赤アクセントの横長(1600×640, 5:2)広告ポスター風デザイン。極太文字、余白広く、スマホで0.5秒で理解できるレイアウト。中央に、コンビニ袋を抱えて一人でソファに座る男性のシルエットイラストと、湯気の立つ汁物の茶碗のイラストを対比配置。黄色見出しで「日曜の夜、独りで買い込んでへんか？」、赤文字で「汁物一杯から」を強調。実在商品のロゴ・パッケージは使わない。`,
+    "5a": `縦長1024×1536、クリーム色〜ライトベージュの紙質感フラットデザイン背景、極太ゴシック文字、余白広く、スマホで0.5秒理解できるレイアウト。3行見出し「日曜の夜/罪悪感で潰れるくらいなら/たんぱく質も入れて食え」（『たんぱく質』を黄色マーカーでハイライト）。手書き風の小さな吹き出しに「週末のご褒美スイーツ」の一言サブコピー。中央〜下に豆腐バナナのショコラムースの完成写真を大きく配置。料理名「豆腐バナナの禁断ショコラムース」を極太文字で表示。時短4バッジ：5分／レンチン／包丁なし／250円目安。画面右に「材料（1人分）」パネルで、高たんぱくヨーグルト100g・絹ごし豆腐100g・バナナ半分・ココアパウダー小さじ2・隠し味マスカルポーネ大さじ1をアイコン付きリストで表示。最下部に「作り方は次へ」の文字。実在商品のロゴ・パッケージは使わない。`,
+    "5b": `縦長1024×1536、クリーム色〜ライトベージュの紙質感フラットデザイン背景、極太ゴシック文字、余白広く。大見出し「5分で完成！」＋時短4バッジ（5分／レンチン／包丁なし／250円目安）を再掲。手順を丸数字バッジ付きで縦に3ステップ並べる：①豆腐を耐熱皿にのせて600Wで1分半レンチンして水切り（工程写真：レンジに入った豆腐の耐熱皿）②粗熱を取りつつバナナ・ヨーグルト・ココアパウダーと一緒にフォークで潰して混ぜる（工程写真：ボウルで潰し混ぜる様子）③マスカルポーネをのせて仕上げ（工程写真：仕上げにマスカルポーネをのせる様子）。最下部に「味の理由は次へ」の文字。実在商品のロゴ・パッケージは使わない。`,
+    "5c": `縦長1024×1536、クリーム色〜ライトベージュの紙質感フラットデザイン背景、極太ゴシック文字、余白広く。見出し「なぜ 豆腐バナナのショコラムース？」＋サブコピー「罪悪感なく甘いもんを楽しむための一皿」。理由リスト4項目：①発酵ヨーグルト×バナナの食物繊維で腸の環境を整えながらデザート欲も満たせる②マスカルポーネのコクがココアの苦みをまろやかにし少量でも満足感が出る③レンチンで水切りするから包丁不要・洗い物も最小限④たんぱく質約18g相当で罪悪感を減らせる。中央に完成写真を配置。添付のシェフ画像を顔立ち・髪型（コーンロウ）・髭・肌の色・墨絵タッチの画風まで忠実に再現し、同一人物として描くこと。変更してよいのは表情・ポーズ・リアクションのみ（服装・髪型・顔立ち・アートスタイルは変更禁止）。シェフが吹き出しで一言「頑張った1週間の締めくくりに、これくらいの甘さは自分に許したってや」と関西弁で語る。弱点＋補強ボックス：弱点＝これだけだと食事にはならない／補強＝小腹が空いた日はゆで卵や味噌汁を1品足すと満足感が安定。最下部に赤帯で「保存しといてくれ」の保存CTA。実在商品のロゴ・パッケージは使わない。`
+  };
+
+  Object.keys(POSTS).forEach(function (key) {
+    var text = POSTS[key];
+    var bodyEl = document.querySelector('[data-body="' + key + '"]');
+    var countEl = document.querySelector('[data-count-for="' + key + '"]');
+    if (bodyEl) bodyEl.textContent = text;
+    if (countEl) countEl.textContent = text.length + "字";
+  });
+
+  function copyText(text) {
+    return new Promise(function (resolve, reject) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(resolve).catch(function () {
+          fallbackCopy(text) ? resolve() : reject(new Error("fallback copy failed"));
+        });
+      } else {
+        fallbackCopy(text) ? resolve() : reject(new Error("fallback copy failed"));
+      }
+    });
+  }
+
+  function fallbackCopy(text) {
+    var textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.top = "0";
+    textarea.style.left = "0";
+    textarea.style.width = "1px";
+    textarea.style.height = "1px";
+    textarea.style.padding = "0";
+    textarea.style.border = "none";
+    textarea.style.outline = "none";
+    textarea.style.boxShadow = "none";
+    textarea.style.background = "transparent";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    textarea.setSelectionRange(0, textarea.value.length);
+    var success = false;
+    try { success = document.execCommand("copy"); } catch (err) { success = false; }
+    document.body.removeChild(textarea);
+    return success;
+  }
+
+  document.querySelectorAll(".copy-btn").forEach(function (btn) {
+    var key = btn.getAttribute("data-copy-btn");
+    btn.addEventListener("click", function () {
+      var text = POSTS[key];
+      if (!text) return;
+      copyText(text).then(function () {
+        showCopied(btn);
+      }).catch(function () {
+        btn.textContent = "コピー失敗";
+        setTimeout(function () { btn.textContent = "コピー"; }, 1500);
+      });
+    });
+  });
+
+  function showCopied(btn) {
+    btn.textContent = "✓ コピーしました";
+    btn.classList.add("copied");
+    setTimeout(function () {
+      btn.textContent = "コピー";
+      btn.classList.remove("copied");
+    }, 1500);
+  }
+})();
+</script>
+</body>
+</html>
