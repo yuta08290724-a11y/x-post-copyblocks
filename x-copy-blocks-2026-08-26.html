@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>X図解 画像プロンプト</title>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --card-bg: #ffffff;
+    --text: #2c2c26;
+    --sub-text: #6b6b60;
+    --green-deep: #3a5a40;
+    --green-mid: #588157;
+    --orange: #e07a3f;
+    --border: #e5ddd0;
+    --shadow: 0 2px 10px rgba(58, 90, 64, 0.08), 0 1px 3px rgba(0,0,0,0.04);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: linear-gradient(180deg, #faf7f2 0%, #f5efe4 100%);
+    color: var(--text);
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+    line-height: 1.7;
+    padding: 20px 12px 60px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; }
+  header.page-header {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 20px 20px 18px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  header.page-header h1 { margin: 0 0 6px; font-size: 1.3rem; color: var(--green-deep); letter-spacing: 0.02em; }
+  header.page-header .date { font-size: 0.9rem; color: var(--sub-text); margin-bottom: 12px; }
+  .rank-line { font-size: 0.85rem; color: var(--text); background: #f0ede3; border-radius: 10px; padding: 10px 12px; line-height: 1.6; }
+  .rank-line strong { color: var(--orange); }
+  .cards { display: flex; flex-direction: column; gap: 18px; }
+  .card { background: var(--card-bg); border-radius: 18px; box-shadow: var(--shadow); border: 1px solid var(--border); overflow: hidden; }
+  .card.accent-recipe { border-left: 5px solid var(--orange); }
+  .card-top { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px 10px; gap: 8px; flex-wrap: wrap; }
+  .top-left, .top-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .badge { display: inline-flex; align-items: center; font-size: 0.78rem; font-weight: 700; padding: 5px 10px; border-radius: 999px; white-space: nowrap; }
+  .badge-no { background: var(--green-deep); color: #fff; }
+  .badge-time { background: #eef2ea; color: var(--green-mid); border: 1px solid #d8e3d3; }
+  .badge-score { background: #fdece0; color: var(--orange); border: 1px solid #f6d3ba; }
+  .badge-count { background: #f0ede3; color: var(--sub-text); font-weight: 500; }
+  .card-body { padding: 4px 16px 16px; white-space: pre-wrap; word-break: break-word; font-size: 0.95rem; line-height: 1.9; color: var(--text); }
+  .card-footer { padding: 0 16px 16px; }
+  .copy-btn { width: 100%; min-height: 52px; border: none; border-radius: 12px; background: var(--green-mid); color: #fff; font-size: 1rem; font-weight: 700; letter-spacing: 0.03em; cursor: pointer; transition: background-color 0.2s ease, transform 0.1s ease; font-family: inherit; }
+  .copy-btn:active { transform: scale(0.98); }
+  .copy-btn:hover { background: var(--green-deep); }
+  .copy-btn.copied { background: var(--orange); }
+  footer.page-footer { text-align: center; font-size: 0.75rem; color: var(--sub-text); margin-top: 24px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="page-header">
+    <h1>X図解 画像プロンプト</h1>
+    <div class="date">2026-08-26</div>
+    <div class="rank-line"><strong>1位=No.5</strong> / 2位=No.3 / 3位=No.1</div>
+  </header>
+  <div class="cards">
+    <div class="card" data-card="1">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.1</span>
+          <span class="badge badge-time">11:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">50点</span>
+          <span class="badge badge-count" data-count-for="1">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="1"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="1">コピー</button>
+      </div>
+    </div>
+
+    <div class="card" data-card="3">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.3</span>
+          <span class="badge badge-time">14:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">50点</span>
+          <span class="badge badge-count" data-count-for="3">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="3"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="3">コピー</button>
+      </div>
+    </div>
+
+    <div class="card accent-recipe" data-card="5a">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.5-①</span>
+          <span class="badge badge-time">18:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">50点</span>
+          <span class="badge badge-count" data-count-for="5a">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="5a"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="5a">コピー</button>
+      </div>
+    </div>
+
+    <div class="card accent-recipe" data-card="5b">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.5-②</span>
+          <span class="badge badge-time">18:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">50点</span>
+          <span class="badge badge-count" data-count-for="5b">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="5b"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="5b">コピー</button>
+      </div>
+    </div>
+
+    <div class="card accent-recipe" data-card="5c">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.5-③</span>
+          <span class="badge badge-time">18:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">50点</span>
+          <span class="badge badge-count" data-count-for="5c">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="5c"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="5c">コピー</button>
+      </div>
+    </div>
+  </div>
+  <footer class="page-footer">タップでコピー → 画像生成AIに貼り付け（シェフ入りは official-chef.jpg を添付）</footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var POSTS = {
+    "1": `黒背景に白文字、黄色見出し、赤アクセントの横長広告ポスター（1600×640、アスペクト比5:2）。極太ゴシック文字、余白広め、スマートフォンで0.5秒で理解できるレイアウト。中央に黄色の極太見出しで「その"無糖" 安心して買うてへんか？」を配置。その下に赤アクセントの小見出しで「食物繊維、表示見てるか？」を添える。背景にコンビニ飲料棚を暗いシルエットで薄く配置し、主役の文字を最大に見せる。実在商品のロゴ・パッケージの再現は禁止。`,
+    "3": `黒背景に白文字、黄色見出し、赤アクセントの横長広告ポスター（1600×640、アスペクト比5:2）。極太ゴシック文字、余白広め、スマートフォンで0.5秒で理解できるレイアウト。中央に黄色の極太見出しで「もち麦・大麦おにぎりが本命」を配置。左下に🥉🥈🥇の3段ランキングバッジを小さく添え、🥇のみ赤アクセントで強調。背景にコンビニのおにぎり棚を暗いシルエットで薄く配置。実在商品のロゴ・パッケージの再現は禁止。`,
+    "5a": `縦長（1024×1536）、クリーム色〜ライトベージュの紙質感フラットデザイン。極太ゴシック文字、余白広め、スマートフォンで0.5秒で理解できるレイアウト。3行見出し「会議中に／まぶたが落ちる／そんな人へ」（"落ちる"の一語を黄色マーカーで強調）。手書き風の小さな吹き出しに「今夜はこれだけでええ」の一言。右上にピンクのリボンで「コンビニで全部そろう！」。中央〜下に「いわし蒲焼ともち麦の塩麹丼」の完成写真を大きく配置し、極太文字で料理名を添える。時短4バッジ（5分・レンチン・包丁不要・350円目安）を並べる。右側に「材料（1人分）」パネルをアイコン付きリストで：イワシ蒲焼缶1缶／もち麦ごはんパック1パック／塩麹小さじ1／きざみ海苔・白ごま少々／隠し味ドライトマト刻み小さじ1。最下部に「作り方は次へ」。実在商品のロゴ・パッケージの再現は禁止。`,
+    "5b": `縦長（1024×1536）、同じクリーム色〜ライトベージュの紙質感フラットデザイン。大見出し「5分で完成！」＋時短4バッジ（5分・レンチン・包丁不要・350円目安）を再掲。3ステップを丸数字バッジと工程写真つきで縦に並べる：①もち麦ごはんをレンチンして器に盛る ②イワシ蒲焼缶を汁ごとのせ、塩麹とドライトマトを絡める ③白ごまと刻み海苔をふる。最下部に「味の理由は次へ」。実在商品のロゴ・パッケージの再現は禁止。`,
+    "5c": `縦長（1024×1536）、同じクリーム色〜ライトベージュの紙質感フラットデザイン。見出し「なぜ、まぶたが軽くなる？」＋サブコピー「もち麦の食物繊維×イワシのたんぱく質」。理由リスト4項目をアイコン付きで：①もち麦の食物繊維（レジスタントスターチ・β-グルカンなど）が糖の吸収をゆるやかにすると言われている ②イワシの脂とたんぱく質が腹持ちを支える ③塩麹の発酵旨味で満足感が出る ④白米だけの時より食後にガクッと来にくいと言われている。完成写真を中央に配置。弱点＋足すなら提案ボックス「こってり感が欲しい人はごま油を数滴」。最下部に赤帯で「保存推奨」。実在商品のロゴ・パッケージの再現は禁止。`
+  };
+
+  Object.keys(POSTS).forEach(function (key) {
+    var text = POSTS[key];
+    var bodyEl = document.querySelector('[data-body="' + key + '"]');
+    var countEl = document.querySelector('[data-count-for="' + key + '"]');
+    if (bodyEl) bodyEl.textContent = text;
+    if (countEl) countEl.textContent = text.length + "字";
+  });
+
+  function copyText(text) {
+    return new Promise(function (resolve, reject) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(resolve).catch(function () {
+          fallbackCopy(text) ? resolve() : reject(new Error("fallback copy failed"));
+        });
+      } else {
+        fallbackCopy(text) ? resolve() : reject(new Error("fallback copy failed"));
+      }
+    });
+  }
+
+  function fallbackCopy(text) {
+    var textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.top = "0";
+    textarea.style.left = "0";
+    textarea.style.width = "1px";
+    textarea.style.height = "1px";
+    textarea.style.padding = "0";
+    textarea.style.border = "none";
+    textarea.style.outline = "none";
+    textarea.style.boxShadow = "none";
+    textarea.style.background = "transparent";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    textarea.setSelectionRange(0, textarea.value.length);
+    var success = false;
+    try { success = document.execCommand("copy"); } catch (err) { success = false; }
+    document.body.removeChild(textarea);
+    return success;
+  }
+
+  document.querySelectorAll(".copy-btn").forEach(function (btn) {
+    var key = btn.getAttribute("data-copy-btn");
+    btn.addEventListener("click", function () {
+      var text = POSTS[key];
+      if (!text) return;
+      copyText(text).then(function () {
+        showCopied(btn);
+      }).catch(function () {
+        btn.textContent = "コピー失敗";
+        setTimeout(function () { btn.textContent = "コピー"; }, 1500);
+      });
+    });
+  });
+
+  function showCopied(btn) {
+    btn.textContent = "✓ コピーしました";
+    btn.classList.add("copied");
+    setTimeout(function () {
+      btn.textContent = "コピー";
+      btn.classList.remove("copied");
+    }, 1500);
+  }
+})();
+</script>
+</body>
+</html>
