@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>X図解 画像プロンプト</title>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --card-bg: #ffffff;
+    --text: #2c2c26;
+    --sub-text: #6b6b60;
+    --green-deep: #3a5a40;
+    --green-mid: #588157;
+    --orange: #e07a3f;
+    --border: #e5ddd0;
+    --shadow: 0 2px 10px rgba(58, 90, 64, 0.08), 0 1px 3px rgba(0,0,0,0.04);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: linear-gradient(180deg, #faf7f2 0%, #f5efe4 100%);
+    color: var(--text);
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+    line-height: 1.7;
+    padding: 20px 12px 60px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; }
+  header.page-header {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 20px 20px 18px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  header.page-header h1 { margin: 0 0 6px; font-size: 1.3rem; color: var(--green-deep); letter-spacing: 0.02em; }
+  header.page-header .date { font-size: 0.9rem; color: var(--sub-text); margin-bottom: 12px; }
+  .rank-line { font-size: 0.85rem; color: var(--text); background: #f0ede3; border-radius: 10px; padding: 10px 12px; line-height: 1.6; }
+  .rank-line strong { color: var(--orange); }
+  .cards { display: flex; flex-direction: column; gap: 18px; }
+  .card { background: var(--card-bg); border-radius: 18px; box-shadow: var(--shadow); border: 1px solid var(--border); overflow: hidden; }
+  .card.accent-recipe { border-left: 5px solid var(--orange); }
+  .card-top { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px 10px; gap: 8px; flex-wrap: wrap; }
+  .top-left, .top-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .badge { display: inline-flex; align-items: center; font-size: 0.78rem; font-weight: 700; padding: 5px 10px; border-radius: 999px; white-space: nowrap; }
+  .badge-no { background: var(--green-deep); color: #fff; }
+  .badge-time { background: #eef2ea; color: var(--green-mid); border: 1px solid #d8e3d3; }
+  .badge-score { background: #fdece0; color: var(--orange); border: 1px solid #f6d3ba; }
+  .badge-count { background: #f0ede3; color: var(--sub-text); font-weight: 500; }
+  .card-body { padding: 4px 16px 16px; white-space: pre-wrap; word-break: break-word; font-size: 0.95rem; line-height: 1.9; color: var(--text); }
+  .card-footer { padding: 0 16px 16px; }
+  .copy-btn { width: 100%; min-height: 52px; border: none; border-radius: 12px; background: var(--green-mid); color: #fff; font-size: 1rem; font-weight: 700; letter-spacing: 0.03em; cursor: pointer; transition: background-color 0.2s ease, transform 0.1s ease; font-family: inherit; }
+  .copy-btn:active { transform: scale(0.98); }
+  .copy-btn:hover { background: var(--green-deep); }
+  .copy-btn.copied { background: var(--orange); }
+  footer.page-footer { text-align: center; font-size: 0.75rem; color: var(--sub-text); margin-top: 24px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="page-header">
+    <h1>X図解 画像プロンプト</h1>
+    <div class="date">2026-09-02</div>
+    <div class="rank-line">推奨投稿順位：<strong>1位=No.1(52点)</strong> / 2位=No.3(51点) / 3位=No.5(47点)</div>
+  </header>
+  <div class="cards">
+    <div class="card" data-card="1">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.1</span>
+          <span class="badge badge-time">11:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">52点</span>
+          <span class="badge badge-count" data-count-for="1">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="1"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="1">コピー</button>
+      </div>
+    </div>
+
+    <div class="card" data-card="3">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.3</span>
+          <span class="badge badge-time">14:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">51点</span>
+          <span class="badge badge-count" data-count-for="3">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="3"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="3">コピー</button>
+      </div>
+    </div>
+
+    <div class="card accent-recipe" data-card="5a">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.5-①</span>
+          <span class="badge badge-time">18:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">47点</span>
+          <span class="badge badge-count" data-count-for="5a">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="5a"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="5a">コピー</button>
+      </div>
+    </div>
+
+    <div class="card accent-recipe" data-card="5b">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.5-②</span>
+          <span class="badge badge-time">18:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">47点</span>
+          <span class="badge badge-count" data-count-for="5b">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="5b"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="5b">コピー</button>
+      </div>
+    </div>
+
+    <div class="card accent-recipe" data-card="5c">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.5-③</span>
+          <span class="badge badge-time">18:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">47点</span>
+          <span class="badge badge-count" data-count-for="5c">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="5c"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="5c">コピー</button>
+      </div>
+    </div>
+  </div>
+  <footer class="page-footer">タップでコピー → 画像生成AIに貼り付け（シェフ入りは official-chef.jpg を添付）</footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var POSTS = {
+    "1": `黒背景に白文字、黄色の見出し、赤のアクセントを使った横長（1600×640、アスペクト比5:2）の広告ポスター風デザイン。極太フォントで中央に大きく「血圧は良くなったのに、体脂肪は悪化した」を黄色で配置し、その直下に赤文字で「良かれと思ったコト、裏目に出てないか？」を添える。左下に小さく、未開封のプロテイン容器とビタミンC粉末パッケージのシルエットを棚に並べたイメージ小道具を配置（汎用デザイン・実在商品ロゴ再現禁止）。余白を広く取り、スマホ画面で0.5秒以内に内容が理解できる視認性を最優先。主役は見出しテキストで、装飾は最小限に抑える。`,
+    "3": `黒背景に白文字、黄色の見出し、赤のアクセントを使った横長（1600×640、アスペクト比5:2）の広告ポスター風デザイン。極太フォントで中央に大きく「3点、合計350円」を黄色で配置し、その下に白文字で「セブンだけで組む『翌朝回復セット』ランキング」を添える。右下に🥉🥈🥇の順位アイコンを大きめに横並びで配置し、🥇の位置だけ赤い「？」マークで正体を隠す引きの演出にする。余白広く、スマホ画面で0.5秒以内に伝わるレイアウト。実在店舗のロゴ・商品パッケージの再現は禁止（汎用的なコンビニ商品シルエットのみ使用）。`,
+    "5a": `縦長（1024×1536）、背景はクリーム色〜ライトベージュの紙質感フラットデザイン。極太ゴシック体、余白広く、スマホ画面で0.5秒以内に理解できるレイアウト。上部に3行見出しとして「前の晩飲みすぎて」「朝起きても体が」「ずっしり重いまま動かへん人へ」を配置し、うち「重いまま」の部分を黄色マーカーで強調。見出し下に手書き風の小さな吹き出しで「パスタより、これでええ」と一言サブコピーを添える。右上にピンクのリボン型バッジで「コンビニで全部そろう！」を配置。中央〜下に「冷凍野菜のラタトゥイユ雑穀丼」の完成写真を大きく配置（トマトソースがかかった雑穀ご飯にほぐしたサラダチキンと彩り野菜、うっすら湯気が立つ様子）。写真下に料理名を極太文字で表示。時短4バッジを横並びで「8分」「レンチン」「包丁なし」「約500円目安」と表示。右側に「材料（1人分）」パネルをアイコン付きリストで表示：冷凍洋風野菜ミックス150g／サラダチキン プレーン100g／カットトマト缶200g／雑穀ご飯75g／【下味】塩麹小さじ1／【隠し味】EXVオリーブオイル＋ドライオレガノ。最下部中央に「作り方は次へ」の文字。実在商品のロゴ・パッケージ再現は禁止。`,
+    "5b": `縦長（1024×1536）、背景はクリーム色〜ライトベージュの紙質感フラットデザイン。極太ゴシック体、余白広く。上部に大見出し「8分で完成！」を配置し、その下に時短4バッジ「8分」「レンチン」「包丁なし」「約500円目安」を再掲。以下3ステップを丸数字バッジ付きで縦に並べる。①「耐熱容器に冷凍野菜ミックス・トマト缶・塩麹を入れてレンジ600Wで4分」＋工程写真（耐熱容器に野菜とトマト缶が入っている様子）。②「サラダチキンを手でほぐして加え、さらに1分加熱して混ぜる」＋工程写真（ほぐしたサラダチキンを混ぜている様子）。③「温めた雑穀ご飯にかけて、EXVオリーブオイルとオレガノをひとまわし」＋工程写真（雑穀ご飯にソースをかける様子、オリーブオイルの艶と湯気）。各ステップに短い見出しを添える。最下部に手書き風の小さなサブコピーで「レンジから出した瞬間、トマトと塩麹の湯気がふわっと鼻に抜ける」を配置し、その下に「味の理由は次へ」の文字で締める。実在商品のロゴ・パッケージ再現は禁止。`,
+    "5c": `縦長（1024×1536）、背景はクリーム色〜ライトベージュの紙質感フラットデザイン。極太ゴシック体、余白広く。上部に見出し「なぜ『飲み会翌日リセット丼』？」とサブコピー「塩麹の発酵旨味とトマトの酸味がオリーブオイルでまとまる」を配置。理由リストを4項目、アイコン付きで縦に並べる：①塩麹の発酵旨味とトマトの酸味がオリーブオイルでひとつにまとまる／②サラダチキンでタンパク質を補える／③冷凍野菜ミックスで食物繊維もいっしょに摂れる／④雑穀ご飯で消化にやさしい炭水化物に。中央に完成写真（トマトソースの丼、うっすら湯気）を配置。添付のシェフ画像を顔立ち・髪型（コーンロウ）・髭・肌の色・墨絵タッチの画風まで忠実に再現し、同一人物として描くこと。変更してよいのは表情・ポーズ・リアクションのみ（服装・髪型・顔立ち・アートスタイルは変更禁止）。シェフを写真の隅に配置し、吹き出しで関西弁の一言「しんどい朝でも、食うことだけは立て直せるで」を添える。下部に弱点＋補強ボックス：「弱点：野菜の量がちょっと少なめ／補強：レタスやミニトマトがあれば追加でちぎって乗せて」。最下部に赤帯で保存CTA「保存して、次の朝いつでも使えるようにしとこか」。実在商品のロゴ・パッケージ再現は禁止。`
+  };
+
+  Object.keys(POSTS).forEach(function (key) {
+    var text = POSTS[key];
+    var bodyEl = document.querySelector('[data-body="' + key + '"]');
+    var countEl = document.querySelector('[data-count-for="' + key + '"]');
+    if (bodyEl) bodyEl.textContent = text;
+    if (countEl) countEl.textContent = text.length + "字";
+  });
+
+  function copyText(text) {
+    return new Promise(function (resolve, reject) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(resolve).catch(function () {
+          fallbackCopy(text) ? resolve() : reject(new Error("fallback copy failed"));
+        });
+      } else {
+        fallbackCopy(text) ? resolve() : reject(new Error("fallback copy failed"));
+      }
+    });
+  }
+
+  function fallbackCopy(text) {
+    var textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.top = "0";
+    textarea.style.left = "0";
+    textarea.style.width = "1px";
+    textarea.style.height = "1px";
+    textarea.style.padding = "0";
+    textarea.style.border = "none";
+    textarea.style.outline = "none";
+    textarea.style.boxShadow = "none";
+    textarea.style.background = "transparent";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    textarea.setSelectionRange(0, textarea.value.length);
+    var success = false;
+    try { success = document.execCommand("copy"); } catch (err) { success = false; }
+    document.body.removeChild(textarea);
+    return success;
+  }
+
+  document.querySelectorAll(".copy-btn").forEach(function (btn) {
+    var key = btn.getAttribute("data-copy-btn");
+    btn.addEventListener("click", function () {
+      var text = POSTS[key];
+      if (!text) return;
+      copyText(text).then(function () {
+        showCopied(btn);
+      }).catch(function () {
+        btn.textContent = "コピー失敗";
+        setTimeout(function () { btn.textContent = "コピー"; }, 1500);
+      });
+    });
+  });
+
+  function showCopied(btn) {
+    btn.textContent = "✓ コピーしました";
+    btn.classList.add("copied");
+    setTimeout(function () {
+      btn.textContent = "コピー";
+      btn.classList.remove("copied");
+    }, 1500);
+  }
+})();
+</script>
+</body>
+</html>
