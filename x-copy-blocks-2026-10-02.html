@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>X図解 画像プロンプト</title>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --card-bg: #ffffff;
+    --text: #2c2c26;
+    --sub-text: #6b6b60;
+    --green-deep: #3a5a40;
+    --green-mid: #588157;
+    --orange: #e07a3f;
+    --border: #e5ddd0;
+    --shadow: 0 2px 10px rgba(58, 90, 64, 0.08), 0 1px 3px rgba(0,0,0,0.04);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: linear-gradient(180deg, #faf7f2 0%, #f5efe4 100%);
+    color: var(--text);
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+    line-height: 1.7;
+    padding: 20px 12px 60px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; }
+  header.page-header {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 20px 20px 18px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  header.page-header h1 { margin: 0 0 6px; font-size: 1.3rem; color: var(--green-deep); letter-spacing: 0.02em; }
+  header.page-header .date { font-size: 0.9rem; color: var(--sub-text); margin-bottom: 12px; }
+  .rank-line { font-size: 0.85rem; color: var(--text); background: #f0ede3; border-radius: 10px; padding: 10px 12px; line-height: 1.6; }
+  .rank-line strong { color: var(--orange); }
+  .cards { display: flex; flex-direction: column; gap: 18px; }
+  .card { background: var(--card-bg); border-radius: 18px; box-shadow: var(--shadow); border: 1px solid var(--border); overflow: hidden; }
+  .card.accent-recipe { border-left: 5px solid var(--orange); }
+  .card-top { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px 10px; gap: 8px; flex-wrap: wrap; }
+  .top-left, .top-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .badge { display: inline-flex; align-items: center; font-size: 0.78rem; font-weight: 700; padding: 5px 10px; border-radius: 999px; white-space: nowrap; }
+  .badge-no { background: var(--green-deep); color: #fff; }
+  .badge-time { background: #eef2ea; color: var(--green-mid); border: 1px solid #d8e3d3; }
+  .badge-score { background: #fdece0; color: var(--orange); border: 1px solid #f6d3ba; }
+  .badge-count { background: #f0ede3; color: var(--sub-text); font-weight: 500; }
+  .card-body { padding: 4px 16px 16px; white-space: pre-wrap; word-break: break-word; font-size: 0.95rem; line-height: 1.9; color: var(--text); }
+  .card-footer { padding: 0 16px 16px; }
+  .copy-btn { width: 100%; min-height: 52px; border: none; border-radius: 12px; background: var(--green-mid); color: #fff; font-size: 1rem; font-weight: 700; letter-spacing: 0.03em; cursor: pointer; transition: background-color 0.2s ease, transform 0.1s ease; font-family: inherit; }
+  .copy-btn:active { transform: scale(0.98); }
+  .copy-btn:hover { background: var(--green-deep); }
+  .copy-btn.copied { background: var(--orange); }
+  footer.page-footer { text-align: center; font-size: 0.75rem; color: var(--sub-text); margin-top: 24px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="page-header">
+    <h1>X図解 画像プロンプト</h1>
+    <div class="date">2026-10-02</div>
+    <div class="rank-line">推奨順位：<strong>1位=No.1（トマトは生がいちばん？）</strong> ／ 2位=No.5（切り干し麺のサンラー味噌スープ） ／ 3位=No.3（足す前に入れ替える3つ）</div>
+  </header>
+  <div class="cards">
+    <div class="card" data-card="1">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.1</span>
+          <span class="badge badge-time">11:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">51点</span>
+          <span class="badge badge-count" data-count-for="1">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="1"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="1">コピー</button>
+      </div>
+    </div>
+
+    <div class="card" data-card="3">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.3</span>
+          <span class="badge badge-time">14:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">50点</span>
+          <span class="badge badge-count" data-count-for="3">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="3"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="3">コピー</button>
+      </div>
+    </div>
+
+    <div class="card accent-recipe" data-card="5a">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.5-①</span>
+          <span class="badge badge-time">18:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">51点</span>
+          <span class="badge badge-count" data-count-for="5a">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="5a"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="5a">コピー</button>
+      </div>
+    </div>
+
+    <div class="card accent-recipe" data-card="5b">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.5-②</span>
+          <span class="badge badge-time">18:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">51点</span>
+          <span class="badge badge-count" data-count-for="5b">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="5b"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="5b">コピー</button>
+      </div>
+    </div>
+
+    <div class="card accent-recipe" data-card="5c">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.5-③</span>
+          <span class="badge badge-time">18:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">51点</span>
+          <span class="badge badge-count" data-count-for="5c">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="5c"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="5c">コピー</button>
+      </div>
+    </div>
+  </div>
+  <footer class="page-footer">タップでコピー → 画像生成AIに貼り付け（シェフ入りは official-chef.jpg を添付）</footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var POSTS = {
+    "1": `添付のシェフ画像を顔立ち・髪型（コーンロウ）・髭・肌の色・墨絵タッチの画風まで忠実に再現し、同一人物として描くこと。変更してよいのは表情・ポーズ・リアクションのみ（服装・髪型・顔立ち・アートスタイルは変更禁止）
+
+横長1600×640（アスペクト比5:2）の広告ポスター風の図解画像を作成してください。
+
+【デザイン】
+黒背景・白文字・黄色見出し・赤アクセント。極太ゴシック体。余白を広く取り、スマホで0.5秒で内容が分かる構成。
+
+【レイアウト】
+左側：黄色の極太文字で見出し「トマトは生がいちばん？」。その下に白文字で小さく「午後の会議で集中が切れる人へ」。
+中央：主役として、湯気の立つ赤いトマトスープのカップを最大サイズで描く。隣に小さく生のトマトを置き、赤い矢印でスープへ向ける。
+右側：シェフが腕を組んで、にやっと笑いながらスープを指さしている。
+下部：赤い帯に白の極太文字で「生でかじるより、潰して火を入れたもん」。帯の右端に小さく「裏面の原材料、先頭がトマトのやつ」。
+
+【禁止】
+実在商品のロゴ・パッケージの再現は禁止。カップは無地の汎用デザインにすること。上記以外の文字・数値・効能の文言を追加しないこと。`,
+    "3": `横長1600×640（アスペクト比5:2）の広告ポスター風の図解画像を作成してください。
+
+【デザイン】
+黒背景・白文字・黄色見出し・赤アクセント。極太ゴシック体。余白を広く取り、スマホで0.5秒で内容が分かる構成。
+
+【レイアウト】
+上部：黄色の極太文字で見出し「足す前に、入れ替える3つ」。その下に白文字で小さく「体のために1品足して、会計だけ増えてへんか？」。
+中央：横に3つのブロックを並べる。各ブロックは「左の商品→右の商品」を赤い太い矢印でつなぐ。
+・1つ目（銅メダルのアイコン）：甘いカフェラテのカップ → 無糖の緑茶のペットボトル
+・2つ目（銀メダルのアイコン）：菓子パン → 全粒粉のパン
+・3つ目（金メダルのアイコン・ほかより大きく）：レジ横の揚げ物 → きんぴらごぼうの小鉢。このブロックだけ黄色の枠で囲む。
+下部：赤い帯に白の極太文字で「足すんやなくて、入れ替える」。
+
+【禁止】
+実在のコンビニや商品のロゴ・パッケージの再現は禁止。商品はすべて無地の汎用デザインにすること。上記以外の文字・数値・効能の文言を追加しないこと。人物は描かない。`,
+    "5a": `縦長1024×1536のレシピ図解画像（3枚組の1枚目：フック＋材料）を作成してください。
+
+【デザイン】
+背景はクリーム色〜ライトベージュの紙質感のフラットデザイン。極太ゴシック体。余白を広く取り、スマホで0.5秒で内容が分かる構成。
+
+【レイアウト】
+最上部：3行の極太見出し「金曜の〆ラーメンで／土曜の昼まで／胃が重たい人へ」。「胃が重たい」に黄色のマーカーを引く。
+見出しの横：手書き風の小さな吹き出しで「麺を切り干し大根に変えるだけ」。
+中央〜下：完成した一杯を大きく描く。丼に入った赤茶色の味噌スープ。麺のように見える切り干し大根、白い豆腐、ほぐした鶏肉、ふわっとした溶き卵、もずく、わかめが見える。湯気が立っている。
+完成写真の下：極太文字で料理名「切り干し麺のサンラー味噌スープ」。
+料理名の下：丸いバッジを4つ横に並べる「7分」「レンジ」「包丁なし」「450円目安」。
+右側：「材料（1人分）」のパネル。小さなアイコン付きのリストで、切り干し大根 15g／絹ごし豆腐 150g／ほぐしサラダチキン 1袋／もずく酢 1パック（汁ごと）／卵 1個／乾燥わかめ ひとつまみ／味噌 小さじ2／水 250ml／隠し味 アンチョビペースト 小さじ1/2。
+最下部：小さく「作り方は次へ」。
+
+【禁止】
+実在商品のロゴ・パッケージの再現は禁止。上記以外の文字・数値・効能の文言を追加しないこと。`,
+    "5b": `縦長1024×1536のレシピ図解画像（3枚組の2枚目：手順）を作成してください。
+
+【デザイン】
+背景はクリーム色〜ライトベージュの紙質感のフラットデザイン。極太ゴシック体。余白を広く取り、スマホで0.5秒で内容が分かる構成。1枚目と同じ色づかい・書体にそろえる。
+
+【レイアウト】
+最上部：大見出し「7分で完成！」。横に丸いバッジ「レンジ」「包丁なし」。
+中央：3つのステップを縦に並べる。各ステップに丸数字のバッジ、短い見出し、工程のイラストを付ける。
+① 見出し「切り干しを戻す」：耐熱の丼に、洗った切り干し大根・乾燥わかめ・水・アンチョビペーストを入れ、ふんわりラップ。横に「600W 3分」。
+② 見出し「具を入れて卵」：豆腐をスプーンですくって入れ、サラダチキンともずく酢を汁ごと加え、溶き卵を回しかける。横に「600W 2分」。
+③ 見出し「味噌を溶く」：最後に味噌を溶いて完成。湯気の立つ丼。横に小さく「味噌は最後。香りを飛ばさんため」。
+最下部：小さく「味の理由は次へ」。
+
+【禁止】
+実在商品のロゴ・パッケージの再現は禁止。手順を4つ以上に増やさないこと。上記以外の文字・数値・効能の文言を追加しないこと。`,
+    "5c": `添付のシェフ画像を顔立ち・髪型（コーンロウ）・髭・肌の色・墨絵タッチの画風まで忠実に再現し、同一人物として描くこと。変更してよいのは表情・ポーズ・リアクションのみ（服装・髪型・顔立ち・アートスタイルは変更禁止）
+
+縦長1024×1536のレシピ図解画像（3枚組の3枚目：なぜこの組み合わせ＋保存）を作成してください。
+
+【デザイン】
+背景はクリーム色〜ライトベージュの紙質感のフラットデザイン。極太ゴシック体。余白を広く取り、スマホで0.5秒で内容が分かる構成。1・2枚目と同じ色づかい・書体にそろえる。
+
+【レイアウト】
+最上部：見出し「なぜ 麺を切り干し大根に？」。その下にサブコピー「麺がなくても『〆た感』が残る」。
+中央上：理由リストを4項目、チェックマーク付きで縦に並べる。
+・アンチョビが魚介のコクを出す
+・もずく酢の甘酸っぱさで後味が軽い
+・切り干しが麺みたいにすすれる
+・味噌は最後に溶いて香りを残す
+中央：完成した一杯を描く。湯気の立つ丼。
+右下：シェフが丼を片手に持って笑っている。吹き出しで「〆は替えたらええねん」。
+下部：枠付きのボックス。「弱点：ラーメンのガツンはない」「足すなら：ごま油を数滴」。
+最下部：赤い帯に白の極太文字で「飲み会の夜のために保存」。
+
+【禁止】
+実在商品のロゴ・パッケージの再現は禁止。上記以外の文字・数値・効能の文言を追加しないこと。`
+  };
+
+  Object.keys(POSTS).forEach(function (key) {
+    var text = POSTS[key];
+    var bodyEl = document.querySelector('[data-body="' + key + '"]');
+    var countEl = document.querySelector('[data-count-for="' + key + '"]');
+    if (bodyEl) bodyEl.textContent = text;
+    if (countEl) countEl.textContent = text.length + "字";
+  });
+
+  function copyText(text) {
+    return new Promise(function (resolve, reject) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(resolve).catch(function () {
+          fallbackCopy(text) ? resolve() : reject(new Error("fallback copy failed"));
+        });
+      } else {
+        fallbackCopy(text) ? resolve() : reject(new Error("fallback copy failed"));
+      }
+    });
+  }
+
+  function fallbackCopy(text) {
+    var textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.top = "0";
+    textarea.style.left = "0";
+    textarea.style.width = "1px";
+    textarea.style.height = "1px";
+    textarea.style.padding = "0";
+    textarea.style.border = "none";
+    textarea.style.outline = "none";
+    textarea.style.boxShadow = "none";
+    textarea.style.background = "transparent";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    textarea.setSelectionRange(0, textarea.value.length);
+    var success = false;
+    try { success = document.execCommand("copy"); } catch (err) { success = false; }
+    document.body.removeChild(textarea);
+    return success;
+  }
+
+  document.querySelectorAll(".copy-btn").forEach(function (btn) {
+    var key = btn.getAttribute("data-copy-btn");
+    btn.addEventListener("click", function () {
+      var text = POSTS[key];
+      if (!text) return;
+      copyText(text).then(function () {
+        showCopied(btn);
+      }).catch(function () {
+        btn.textContent = "コピー失敗";
+        setTimeout(function () { btn.textContent = "コピー"; }, 1500);
+      });
+    });
+  });
+
+  function showCopied(btn) {
+    btn.textContent = "✓ コピーしました";
+    btn.classList.add("copied");
+    setTimeout(function () {
+      btn.textContent = "コピー";
+      btn.classList.remove("copied");
+    }, 1500);
+  }
+})();
+</script>
+</body>
+</html>
