@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>X図解 画像プロンプト</title>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --card-bg: #ffffff;
+    --text: #2c2c26;
+    --sub-text: #6b6b60;
+    --green-deep: #3a5a40;
+    --green-mid: #588157;
+    --orange: #e07a3f;
+    --border: #e5ddd0;
+    --shadow: 0 2px 10px rgba(58, 90, 64, 0.08), 0 1px 3px rgba(0,0,0,0.04);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: linear-gradient(180deg, #faf7f2 0%, #f5efe4 100%);
+    color: var(--text);
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+    line-height: 1.7;
+    padding: 20px 12px 60px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; }
+  header.page-header {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 20px 20px 18px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  header.page-header h1 { margin: 0 0 6px; font-size: 1.3rem; color: var(--green-deep); letter-spacing: 0.02em; }
+  header.page-header .date { font-size: 0.9rem; color: var(--sub-text); margin-bottom: 12px; }
+  .rank-line { font-size: 0.85rem; color: var(--text); background: #f0ede3; border-radius: 10px; padding: 10px 12px; line-height: 1.6; }
+  .rank-line strong { color: var(--orange); }
+  .cards { display: flex; flex-direction: column; gap: 18px; }
+  .card { background: var(--card-bg); border-radius: 18px; box-shadow: var(--shadow); border: 1px solid var(--border); overflow: hidden; }
+  .card.accent-recipe { border-left: 5px solid var(--orange); }
+  .card-top { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px 10px; gap: 8px; flex-wrap: wrap; }
+  .top-left, .top-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .badge { display: inline-flex; align-items: center; font-size: 0.78rem; font-weight: 700; padding: 5px 10px; border-radius: 999px; white-space: nowrap; }
+  .badge-no { background: var(--green-deep); color: #fff; }
+  .badge-time { background: #eef2ea; color: var(--green-mid); border: 1px solid #d8e3d3; }
+  .badge-score { background: #fdece0; color: var(--orange); border: 1px solid #f6d3ba; }
+  .badge-count { background: #f0ede3; color: var(--sub-text); font-weight: 500; }
+  .card-body { padding: 4px 16px 16px; white-space: pre-wrap; word-break: break-word; font-size: 0.95rem; line-height: 1.9; color: var(--text); }
+  .card-footer { padding: 0 16px 16px; }
+  .copy-btn { width: 100%; min-height: 52px; border: none; border-radius: 12px; background: var(--green-mid); color: #fff; font-size: 1rem; font-weight: 700; letter-spacing: 0.03em; cursor: pointer; transition: background-color 0.2s ease, transform 0.1s ease; font-family: inherit; }
+  .copy-btn:active { transform: scale(0.98); }
+  .copy-btn:hover { background: var(--green-deep); }
+  .copy-btn.copied { background: var(--orange); }
+  footer.page-footer { text-align: center; font-size: 0.75rem; color: var(--sub-text); margin-top: 24px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="page-header">
+    <h1>X図解 画像プロンプト</h1>
+    <div class="date">2026-10-10</div>
+    <div class="rank-line">推奨順位：<strong>1位=No.1（52点）</strong> / 2位=No.5（52点） / 3位=No.3（51点）</div>
+  </header>
+  <div class="cards">
+    <div class="card" data-card="1">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.1</span>
+          <span class="badge badge-time">11:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">52点</span>
+          <span class="badge badge-count" data-count-for="1">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="1"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="1">コピー</button>
+      </div>
+    </div>
+
+    <div class="card" data-card="3">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.3</span>
+          <span class="badge badge-time">14:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">51点</span>
+          <span class="badge badge-count" data-count-for="3">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="3"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="3">コピー</button>
+      </div>
+    </div>
+
+    <div class="card accent-recipe" data-card="5a">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.5-①</span>
+          <span class="badge badge-time">18:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">52点</span>
+          <span class="badge badge-count" data-count-for="5a">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="5a"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="5a">コピー</button>
+      </div>
+    </div>
+
+    <div class="card accent-recipe" data-card="5b">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.5-②</span>
+          <span class="badge badge-time">18:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">52点</span>
+          <span class="badge badge-count" data-count-for="5b">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="5b"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="5b">コピー</button>
+      </div>
+    </div>
+
+    <div class="card accent-recipe" data-card="5c">
+      <div class="card-top">
+        <div class="top-left">
+          <span class="badge badge-no">No.5-③</span>
+          <span class="badge badge-time">18:00</span>
+        </div>
+        <div class="top-right">
+          <span class="badge badge-score">52点</span>
+          <span class="badge badge-count" data-count-for="5c">0字</span>
+        </div>
+      </div>
+      <div class="card-body" data-body="5c"></div>
+      <div class="card-footer">
+        <button class="copy-btn" data-copy-btn="5c">コピー</button>
+      </div>
+    </div>
+  </div>
+  <footer class="page-footer">タップでコピー → 画像生成AIに貼り付け（シェフ入りは official-chef.jpg を添付）</footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var POSTS = {
+    "1": `添付のシェフ画像を顔立ち・髪型（コーンロウ）・髭・肌の色・墨絵タッチの画風まで忠実に再現し、同一人物として描くこと。変更してよいのは表情・ポーズ・リアクションのみ（服装・髪型・顔立ち・アートスタイルは変更禁止）
+
+横長1600×640（アスペクト比5:2）の広告ポスター風X図解。黒背景・白文字・黄色見出し・赤アクセント・極太ゴシック・余白広く・スマホで0.5秒で理解できる構図。
+
+左側：大きな黄色見出し「腹が弱い人ほど、野菜や豆を控えてへんか？」（「控えてへんか？」を赤で強調）
+中央：小さな和食の小鉢に盛った切り干し大根の煮物を大きく主役として配置。湯気は控えめ、素朴であたたかい質感。小鉢の横に「半分から」と書いた赤い手書き風の矢印。
+右側：腕を組んで少し心配そうに、でも優しく笑うシェフ（関西弁の吹き出し「いきなり山盛りにせんでええ」）
+下部の白文字帯：「削りすぎると、菌のエサまで減っていく」
+
+実在商品のロゴ・パッケージは描かない。本文にない効能や数値は入れない。`,
+    "3": `添付のシェフ画像を顔立ち・髪型（コーンロウ）・髭・肌の色・墨絵タッチの画風まで忠実に再現し、同一人物として描くこと。変更してよいのは表情・ポーズ・リアクションのみ（服装・髪型・顔立ち・アートスタイルは変更禁止）
+
+横長1600×640（アスペクト比5:2）の広告ポスター風X図解。黒背景・白文字・黄色見出し・赤アクセント・極太ゴシック・余白広く・スマホで0.5秒で理解できる構図。
+
+上部の黄色見出し：「疲れた夜のおでん、最初の3品はこれ」
+中央：湯気の立つおでんのカップを主役に大きく。中に大根・ゆで卵・厚揚げが見える。
+3つの具の横にランキング表示：「🥉 大根」「🥈 ゆで卵」「🥇 厚揚げ（理由は次で）」。🥇の厚揚げだけ赤い枠で囲み、説明文はあえて出さない。
+右下：片手で指を3本立てるシェフ（吹き出し「練り物は4品目からや」）
+下部の白文字帯：「最初の一品は、形の残ってるもんから」
+
+実在商品のロゴ・パッケージ・チェーン名の看板は描かない。本文にない効能や数値は入れない。`,
+    "5a": `縦長1024×1536。背景はクリーム色〜ライトベージュの紙質感フラットデザイン。極太ゴシック・余白広く・スマホで0.5秒理解。実在商品のロゴ・パッケージは描かない。
+
+上部の3行見出し：「土曜の夕方も／平日の疲れが／体の奥に残ってる人へ」（「体の奥」を黄色マーカー）
+手書き風の小吹き出し：「レンジだけで晩メシを立て直す」
+右上にピンクのリボン：「コンビニで全部そろう！」
+中央〜下に完成写真を大きく：丼に盛ったご飯の上に、茶色の納豆そぼろ・黄色のふわふわ炒り卵・緑のほうれん草が三色に並んだ「包丁なし三色納豆そぼろ丼」。湯気がふわっと立つ。
+料理名を極太文字で：「包丁なし三色納豆そぼろ丼」
+時短4バッジ：「7分」「レンジ」「包丁なし」「350円目安」
+右側に「材料（1人分）」パネル（アイコン付きリスト）：ご飯 小盛り70g／納豆 2パック／卵 1個／冷凍ほうれん草 50g／隠し味 アンチョビペースト 小さじ1/2
+最下部：「作り方は次へ」`,
+    "5b": `縦長1024×1536。背景はクリーム色〜ライトベージュの紙質感フラットデザイン。極太ゴシック・余白広く・スマホで0.5秒理解。実在商品のロゴ・パッケージは描かない。
+
+大見出し：「7分で完成！」＋バッジ再掲「レンジ」「包丁なし」「350円目安」
+手順を縦に3つ並べる（各ステップに丸数字バッジ＋短い見出し＋工程写真）：
+①「卵とほうれん草をチン」耐熱ボウルに溶き卵と冷凍ほうれん草。ラップなし600W1分→フォークで崩して30秒
+②「納豆にアンチョビを混ぜる」納豆2パック＋付属のたれ＋アンチョビペースト
+③「ご飯に半分ずつのせる」温めたご飯70gに①と②を並べて三色に
+最下部：「味の理由は次へ」`,
+    "5c": `添付のシェフ画像を顔立ち・髪型（コーンロウ）・髭・肌の色・墨絵タッチの画風まで忠実に再現し、同一人物として描くこと。変更してよいのは表情・ポーズ・リアクションのみ（服装・髪型・顔立ち・アートスタイルは変更禁止）
+
+縦長1024×1536。背景はクリーム色〜ライトベージュの紙質感フラットデザイン。極太ゴシック・余白広く・スマホで0.5秒理解。実在商品のロゴ・パッケージは描かない。
+
+見出し：「なぜ ひき肉を納豆に？」サブコピー「いつもの三色そぼろ丼、ひき肉を納豆に変えるだけ」
+理由リスト4項目：
+・炒める手間がいらず、レンジだけで作れる
+・納豆の菌と、豆・ほうれん草の繊維を一緒にとれる
+・アンチョビの旨味が、たれの甘辛さを締める
+・ご飯は小盛りでも、卵と納豆で食べた感が出る
+中央に完成写真（三色納豆そぼろ丼・湯気）
+シェフが丼を差し出す（関西弁の吹き出し「洋風やのに、ちゃんとご飯に合うで」）
+弱点＋足すなら提案ボックス：「弱点：腹ペコの日は物足りんかも → インスタント味噌汁を1杯足す」
+最下部の赤帯：「保存して、来週の土曜にもう一回」`
+  };
+
+  Object.keys(POSTS).forEach(function (key) {
+    var text = POSTS[key];
+    var bodyEl = document.querySelector('[data-body="' + key + '"]');
+    var countEl = document.querySelector('[data-count-for="' + key + '"]');
+    if (bodyEl) bodyEl.textContent = text;
+    if (countEl) countEl.textContent = text.length + "字";
+  });
+
+  function copyText(text) {
+    return new Promise(function (resolve, reject) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(resolve).catch(function () {
+          fallbackCopy(text) ? resolve() : reject(new Error("fallback copy failed"));
+        });
+      } else {
+        fallbackCopy(text) ? resolve() : reject(new Error("fallback copy failed"));
+      }
+    });
+  }
+
+  function fallbackCopy(text) {
+    var textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.top = "0";
+    textarea.style.left = "0";
+    textarea.style.width = "1px";
+    textarea.style.height = "1px";
+    textarea.style.padding = "0";
+    textarea.style.border = "none";
+    textarea.style.outline = "none";
+    textarea.style.boxShadow = "none";
+    textarea.style.background = "transparent";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    textarea.setSelectionRange(0, textarea.value.length);
+    var success = false;
+    try { success = document.execCommand("copy"); } catch (err) { success = false; }
+    document.body.removeChild(textarea);
+    return success;
+  }
+
+  document.querySelectorAll(".copy-btn").forEach(function (btn) {
+    var key = btn.getAttribute("data-copy-btn");
+    btn.addEventListener("click", function () {
+      var text = POSTS[key];
+      if (!text) return;
+      copyText(text).then(function () {
+        showCopied(btn);
+      }).catch(function () {
+        btn.textContent = "コピー失敗";
+        setTimeout(function () { btn.textContent = "コピー"; }, 1500);
+      });
+    });
+  });
+
+  function showCopied(btn) {
+    btn.textContent = "✓ コピーしました";
+    btn.classList.add("copied");
+    setTimeout(function () {
+      btn.textContent = "コピー";
+      btn.classList.remove("copied");
+    }, 1500);
+  }
+})();
+</script>
+</body>
+</html>
